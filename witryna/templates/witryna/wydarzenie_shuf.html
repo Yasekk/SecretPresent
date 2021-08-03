@@ -1,0 +1,12 @@
+{% extends 'witryna/base.html' %}
+{% block content %}
+<p>{{event}}</p>
+<p>Lista uczestników:</p>
+<ul>
+  {% for participant in participants %}
+    <li>{{participant}}</li>
+  {% empty %}
+    <li>Nie masz dodanych uczestników</li>
+  {% endfor %}
+</ul>
+{% endblock content %}

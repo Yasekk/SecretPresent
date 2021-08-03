@@ -1,0 +1,8 @@
+{% extends 'witryna/base.html' %}
+{% block content %}
+  <form action="{% url 'witryna:dod_uczestnik' event.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Zapisz</button>
+  </form>
+{% endblock content %}

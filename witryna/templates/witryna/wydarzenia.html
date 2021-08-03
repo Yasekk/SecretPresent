@@ -1,0 +1,16 @@
+{% extends 'witryna/base.html' %}
+{% block header %}
+  <h1>Lista wydarzeń</h1>
+{% endblock header %}
+{% block content %}
+  <h3>Oto lista twoich wydarzeń:</h3>
+  {% for event in events %}
+    <li>
+	  <a href="{% url 'witryna:wydarzenie' event.id %}">{{event}}</a>
+    </li>
+  {% empty %}
+    <li>Nie masz jeszcze żadnych wydarzeń</li>
+  {% endfor %}
+  <h4><a href="{% url 'witryna:dod_wydarzenia'%}">Dodaj wydarzenie</a></h4>
+{% endblock content %}
+

@@ -1,0 +1,25 @@
+{% extends 'witryna/base.html' %}
+{% block header %}
+  <h1>Wydarzenie {{event}}</h1>
+{% endblock header %}
+{% block content %}
+  {% if event.shuffled == "no" %}
+    <p><a href="{% url 'witryna:losowanie' event.id %}">Rozpocznij losowanie</a></p>
+    <p><a href="{% url 'witryna:dod_uczestnik' event.id %}">Wpisz siebie jako uczestnika</a></p>
+  {% else %}
+    <p>Wynik twojego losowania:</p>
+    {% for participant in participants %}
+      {% if participant.taker == user.username %}
+	    <p>Robisz prezent dla {{ participant }}</p>
+      {% endif %}
+	{% endfor %}
+  {% endif %}
+<p>Lista uczestników:</p>
+<ul>
+  {% for participant in participants %}
+    <li>{{participant}}</li>
+  {% empty %}
+    <li>Nie masz dodanych uczestników</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
